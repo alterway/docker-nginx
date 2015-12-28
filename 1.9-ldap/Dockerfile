@@ -33,6 +33,8 @@ RUN mkdir /etc/nginx && \
 	make install  && \
 	rm -rf /var/src/nginx-auth-ldap /var/src/nginx
 
+COPY ssl /etc/nginx/ssl
+
 EXPOSE 80 443
 
 WORKDIR /var/www
