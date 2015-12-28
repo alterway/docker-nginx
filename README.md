@@ -9,7 +9,6 @@
 
 - [Nicolas Berthe](https://github.com/4devnull)
 
-
-## License
+## License
 
 View [LICENSE](LICENSE) for the software contained in this image.
