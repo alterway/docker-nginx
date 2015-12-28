@@ -1,0 +1,17 @@
+stages:
+  - build
+
+variables:
+  REGISTRY: hub.alterway.fr
+
+before_script:
+  - if [[ "$CI_BUILD_REF_NAME" != master ]]; then REGISTRY="$REGISTRY/$CI_BUILD_REF_NAME"; fi
+
+build:
+  stage: build
+  script:
+    - docker build --pull -t $REGISTRY/nginx:1.9-ldap 1.9-ldap/
+    - docker push $REGISTRY/nginx:1.9-ldap
+  only:
+    - preprod
+    - master
