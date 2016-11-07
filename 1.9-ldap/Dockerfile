@@ -25,7 +25,7 @@ RUN mkdir /etc/nginx && \
 		--add-module=/usr/src/nginx-auth-ldap \
 		--with-http_ssl_module \
 		--with-debug \
-		--conf-path=/etc/nginx/nginx.conf \ 
+		--conf-path=/etc/nginx/nginx.conf \
 		--sbin-path=/usr/bin/nginx \
 		--pid-path=/var/run/nginx.pid \
 		--error-log-path=/dev/sdterr \
@@ -34,6 +34,7 @@ RUN mkdir /etc/nginx && \
 	rm -rf /var/src/nginx-auth-ldap /var/src/nginx
 
 COPY ssl /etc/nginx/ssl
+COPY proxy.conf /etc/nginx/
 
 EXPOSE 80 443
 
@@ -42,4 +43,3 @@ WORKDIR /var/www
 COPY docker-entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-
