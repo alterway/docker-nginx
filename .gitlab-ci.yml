@@ -10,8 +10,10 @@ before_script:
 build:
   stage: build
   script:
-    - docker build --pull -t $REGISTRY/nginx:1.9-ldap 1.9-ldap/
-    - docker push $REGISTRY/nginx:1.9-ldap
+    - docker build --pull -t $REGISTRY/nginx:1.9-ldap 1.9-ldap/ > /dev/null
+    - docker build --pull -t $REGISTRY/nginx:1.10-auth-request 1.10-auth-request/ > /dev/null
+    - docker push $REGISTRY/nginx:1.9-ldap > /dev/null
+    - docker push $REGISTRY/nginx:1.10-auth-request > /dev/null
   only:
     - preprod
     - master
